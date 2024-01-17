@@ -1,12 +1,27 @@
 import './App.css';
+import React, { useState } from "react";
+import {
+  StompSessionProvider,
+  useStompClient,
+  useSubscription,
+  withStompClient,
+  withSubscription
+} from "react-stomp-hooks";
 
-function App() {
+import ChatPage from "./components/ChatPage";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        doody
-      </header>
-    </div>
+    <>
+      <StompSessionProvider
+        url="http://localhost:8080/ws"
+      ></StompSessionProvider>
+      <div className="App">
+        <header className="App-header">
+          <ChatPage />
+        </header>
+      </div>
+    </>
   );
 }
 
